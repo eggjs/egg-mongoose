@@ -1,5 +1,4 @@
 # egg-mongoose
-mongoose plugin in egg
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
