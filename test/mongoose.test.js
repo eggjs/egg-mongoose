@@ -32,4 +32,18 @@ describe('test/mongoose.test.js', () => {
 
     assert(res.body[0].name === 'mongoose');
   });
+
+  it('should get data from create with capitalized model file name', function* () {
+    app.mockCsrf();
+
+    yield request(app.callback())
+      .post('/books')
+      .send({ name: 'mongoose' })
+      .expect(200);
+
+    const res = yield request(app.callback())
+    .get('/books');
+
+    assert(res.body[0].name === 'mongoose');
+  });
 });
