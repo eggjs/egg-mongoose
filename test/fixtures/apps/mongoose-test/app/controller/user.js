@@ -11,10 +11,11 @@ module.exports = app => {
       let user = new this.ctx.model.user({
         name: this.ctx.request.body.name
       })
-      yield user.save()
+      yield user.save();
       this.ctx.body = user;
     }
   }
 
   return UserController;
+
 }

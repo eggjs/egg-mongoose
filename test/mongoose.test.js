@@ -23,13 +23,11 @@ describe('test/mongoose.test.js', () => {
     app.mockCsrf();
 
     yield request(app.callback())
-      .post('/users')
-      .send({ name: 'mongoose' })
-      .expect(200);
+    .post('/users')
+    .send({ name: 'mongoose' })
+    .expect(200);
 
-    const res = yield request(app.callback())
-    .get('/users');
-
+    const res = yield request(app.callback()).get('/users');
     assert(res.body[0].name === 'mongoose');
   });
 
@@ -37,13 +35,11 @@ describe('test/mongoose.test.js', () => {
     app.mockCsrf();
 
     yield request(app.callback())
-      .post('/books')
-      .send({ name: 'mongoose' })
-      .expect(200);
+    .post('/books')
+    .send({ name: 'mongoose' })
+    .expect(200);
 
-    const res = yield request(app.callback())
-    .get('/books');
-
+    const res = yield request(app.callback()).get('/books');
     assert(res.body[0].name === 'mongoose');
   });
 });

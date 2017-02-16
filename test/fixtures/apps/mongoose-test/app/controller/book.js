@@ -11,10 +11,11 @@ module.exports = app => {
       let book = new this.ctx.model.Book({
         name: this.ctx.request.body.name
       })
-      yield book.save()
+      yield book.save();
       this.ctx.body = book;
     }
   }
 
   return BookController;
+
 }
