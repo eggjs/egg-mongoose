@@ -13,6 +13,7 @@
     "egg-plugin"
   ],
   "dependencies": {
+    "await-event": "^2.0.0",
     "mongoose": "^4.8.2"
   },
   "devDependencies": {

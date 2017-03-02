@@ -49,6 +49,16 @@ exports.mongoose = {
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
+## Multi-mongos support
+
+```js
+// {app_root}/config/config.default.js
+exports.mongoose = {
+  url: 'mongodb://mongosA:27501,mongosB:27501',
+  options: {}
+};
+```
+
 ## Example
 ```js
 // app/model/user.js
