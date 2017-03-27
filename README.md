@@ -53,9 +53,18 @@ see [config/config.default.js](config/config.default.js) for more detail.
 
 ```js
 // {app_root}/config/config.default.js
-exports.mongoose = {
-  url: 'mongodb://mongosA:27501,mongosB:27501',
-  options: {}
+module.exports = appInfo => {
+const config = {};
+
+// should change to your own
+config.keys = appInfo.name + 'own';
+
+config.mongoose = {
+url: 'mongodb://127.0.0.1/blockdb',
+options: {}
+};
+
+return config;
 };
 ```
 
@@ -73,7 +82,7 @@ module.exports = mongoose => {
 
 // app/controller/user.js
 exports.index = function* () {
-  this.body = yield this.model.user.find({});
+  this.body = yield this.ctx.model.user.find({});
 }
 ```
 
