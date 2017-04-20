@@ -72,8 +72,8 @@ module.exports = mongoose => {
 }
 
 // app/controller/user.js
-exports.index = function* () {
-  this.body = yield this.ctx.model.user.find({});
+exports.index = function* (ctx) {
+  ctx.body = yield ctx.model.user.find({});
 }
 ```
 
