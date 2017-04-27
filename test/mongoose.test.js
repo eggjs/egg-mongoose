@@ -16,7 +16,7 @@ describe('test/mongoose.test.js', () => {
   after(() => app.close());
   afterEach(mm.restore);
   afterEach(function* () {
-    yield app.model.user.remove({});
+    yield app.model.User.remove({});
   });
 
   it('should get data from create', function* () {
@@ -42,4 +42,9 @@ describe('test/mongoose.test.js', () => {
     const res = yield request(app.callback()).get('/books');
     assert(res.body[0].name === 'mongoose');
   });
+
+  it('should not load unformatted mongoose', function* () {
+    assert(app.model.other === undefined);
+  });
+
 });
