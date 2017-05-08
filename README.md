@@ -73,7 +73,7 @@ module.exports = mongoose => {
 
 // app/controller/user.js
 exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.user.find({});
+  ctx.body = yield ctx.model.User.find({});  // you should use upper case to access mongoose model
 }
 ```
 

@@ -3,12 +3,12 @@
 module.exports = app => {
   class UserController extends app.Controller {
     * index() {
-      const users = yield this.ctx.model.user.find({});
+      const users = yield this.ctx.model.User.find({});
       this.ctx.body = users;
     }
 
     * create() {
-      const user = new this.ctx.model.user({
+      const user = new this.ctx.model.User({
         name: this.ctx.request.body.name,
       });
       yield user.save();
