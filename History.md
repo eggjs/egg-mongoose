@@ -1,4 +1,9 @@
 
+2.1.1 / 2017-09-18
+==================
+
+  * feat:support custom promise, access mongoose source (#12)
+
 2.1.0 / 2017-05-16
 ==================
 
