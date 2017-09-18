@@ -6,14 +6,16 @@ const mm = require('egg-mock');
 
 describe('test/mongoose.test.js', () => {
   let app;
-  before(() => {
+  before(function* () {
     app = mm.app({
       baseDir: 'apps/mongoose-test',
     });
-    return app.ready();
+    yield app.ready();
   });
 
-  after(() => app.close());
+  after(() => {
+    app.close();
+  });
   afterEach(mm.restore);
   afterEach(function* () {
     yield app.model.User.remove({});
@@ -45,6 +47,30 @@ describe('test/mongoose.test.js', () => {
 
   it('should not load unformatted mongoose', function* () {
     assert(app.model.other === undefined);
+  });
+});
+
+
+describe('test/mongoose.test.js', () => {
+  let app;
+  before(function* () {
+    app = mm.app({
+      baseDir: 'apps/mongoose-test-custom',
+    });
+    yield app.ready();
+  });
+
+  after(() => {
+    app.close();
+  });
+  afterEach(mm.restore);
+  afterEach(function* () {
+    yield app.model.User.remove({});
+  });
+
+  it('should load custom promise', function* () {
+    const query = app.model.User.findOne({ name: "Guns N' Roses" });
+    assert.equal(query.exec().constructor, require('bluebird'));
   });
 
 });
