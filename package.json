@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "await-event": "^2.0.0",
+    "eslint-config-egg": "^5.1.1",
     "mongoose": "^4.8.6"
   },
   "devDependencies": {
@@ -22,7 +23,6 @@
     "egg-bin": "^2.4.0",
     "egg-mock": "^3.1.2",
     "eslint": "^3.17.1",
-    "eslint-config-egg": "^3.2.0",
     "supertest": "^3.0.0",
     "webstorm-disable-index": "^1.1.2"
   },
