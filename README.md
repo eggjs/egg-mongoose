@@ -8,8 +8,8 @@
 
 [npm-image]: https://img.shields.io/npm/v/egg-mongoose.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-mongoose
-[travis-image]: https://img.shields.io/travis/eggjs/egg-mongoose.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-mongoose
+[travis-image]: https://img.shields.io/travis/feng-fu/egg-mongoose.svg?style=flat-square
+[travis-url]: https://travis-ci.org/feng-fu/egg-mongoose
 [codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-mongoose.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/eggjs/egg-mongoose?branch=master
 [david-image]: https://img.shields.io/david/eggjs/egg-mongoose.svg?style=flat-square
