@@ -8,8 +8,8 @@
 
 [npm-image]: https://img.shields.io/npm/v/egg-mongoose.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-mongoose
-[travis-image]: https://img.shields.io/travis/eggjs/egg-mongoose.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-mongoose
+[travis-image]: https://img.shields.io/travis/feng-fu/egg-mongoose.svg?style=flat-square
+[travis-url]: https://travis-ci.org/feng-fu/egg-mongoose
 [codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-mongoose.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/eggjs/egg-mongoose?branch=master
 [david-image]: https://img.shields.io/david/eggjs/egg-mongoose.svg?style=flat-square
@@ -39,12 +39,30 @@ exports.mongoose = {
 
 ## Configuration
 
+### 
 ```js
 // {app_root}/config/config.default.js
 exports.mongoose = {
   url: 'mongodb://127.0.0.1/example',
   options: {}
 };
+```
+
+or for multi database
+
+```js
+exports.mogoose = [
+  {
+    url: 'mongodb://127.0.0.1/example0',
+    options: {},
+    database: db0
+  },
+    {
+    url: 'mongodb://127.0.0.1/example1',
+    options: {},
+    database: db1
+  }
+]
 ```
 
 see [config/config.default.js](config/config.default.js) for more detail.
@@ -71,7 +89,22 @@ module.exports = app => {
 
   return mongoose.model('User', UserSchema);
 }
+```
 
+or for multi database
+
+```js
+module.exports = app => {
+  const mongoose = app.mongoose.db1;  // diff.
+  const UserSchema = new mongoose.Schema({
+    userName: { type: String  }
+  });
+
+  return mongoose.model('User', UserSchema);
+}
+```
+
+```js
 // app/controller/user.js
 exports.index = function* (ctx) {
   ctx.body = yield ctx.model.User.find({});  // you should use upper case to access mongoose model
