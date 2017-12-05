@@ -6,5 +6,5 @@ module.exports = app => {
     name: { type: String },
   });
 
-  return mongoose.model('Book', BoookSchema);
+  return mongoose.model('Cat', BoookSchema, null, { cache: false });
 };
