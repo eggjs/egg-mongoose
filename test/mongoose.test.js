@@ -24,27 +24,28 @@ describe('test/mongoose.test.js', () => {
     });
 
     it('should has app model property', function* () {
-      assert.ok(app.model);
-      assert.ok(app.model.User);
-      assert.equal(app.model.user, undefined);
-      assert.ok(app.model.Book);
-      assert.equal(app.model.book, undefined);
-      assert.equal(app.model.Other, undefined);
+      assert(app.model);
+      assert(app.model.User.prototype instanceof app.mongoose.Model);
+      assert(app.model.user === undefined);
+      assert(app.model.Book.prototype instanceof app.mongoose.Model);
+      assert(app.model.book === undefined);
+      assert(app.model.Other === undefined);
     });
 
     it('should has app ctx property', function* () {
       const ctx = app.mockContext();
-      assert.ok(ctx.model);
-      assert.ok(ctx.model.User);
-      assert.equal(ctx.model.user, undefined);
-      assert.ok(ctx.model.Book);
-      assert.equal(ctx.model.book, undefined);
-      assert.equal(ctx.model.Other, undefined);
+      assert(ctx.model);
+      assert(ctx.model.User.prototype instanceof app.mongoose.Model);
+      assert(ctx.model.user === undefined);
+      assert(ctx.model.Book.prototype instanceof app.mongoose.Model);
+      assert(ctx.model.book === undefined);
+      assert(ctx.model.Other === undefined);
     });
 
     it('should has sub model', function* () {
-      assert.ok(app.model.Animal.Dog);
-      assert.ok(app.model.Animal.Cat);
+      assert(app.model.Animal.prototype instanceof app.mongoose.Model);
+      assert(app.model.Animal.Dog.prototype instanceof app.mongoose.Model);
+      assert(app.model.Animal.Cat.prototype instanceof app.mongoose.Model);
     });
 
     it('should get data from create', function* () {
