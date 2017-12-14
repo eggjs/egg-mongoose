@@ -169,4 +169,36 @@ describe('test/mongoose.test.js', () => {
       assert(res.user.name === 'mongoose');
     });
   });
+
+  describe('custom loadModel', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-loadModel',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.model.Book.remove({});
+      yield app.model.User.remove({});
+    });
+
+    it('should has app custom mymongoose', function* () {
+      assert(app.mymongoose);
+    });
+
+    it('should has app model property', function* () {
+      assert(app.model);
+      assert(app.model.User.prototype instanceof app.mongoose.Model);
+      assert(app.model.user === undefined);
+      assert(app.model.Book.prototype instanceof app.mongoose.Model);
+      assert(app.model.book === undefined);
+      assert(app.model.Other === undefined);
+    });
+  });
 });
