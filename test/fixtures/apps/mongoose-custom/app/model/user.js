@@ -2,9 +2,9 @@
 
 module.exports = app => {
   const mongoose = app.mongoose;
-  const BoookSchema = new mongoose.Schema({
+  const UserSchema = new mongoose.Schema({
     name: { type: String },
   });
 
-  return mongoose.model('Book', BoookSchema);
+  return mongoose.model('User', UserSchema, null, { cache: false });
 };

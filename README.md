@@ -27,25 +27,121 @@ Egg's mongoose plugin.
 $ npm i egg-mongoose --save
 ```
 
-## Usage
+## Configuration
+
+Change `{app_root}/config/plugin.js` to enable `egg-mongoose` plugin:
 
 ```js
-// {app_root}/config/plugin.js
 exports.mongoose = {
   enable: true,
   package: 'egg-mongoose',
 };
 ```
 
-## Configuration
+## Simple connection
+
+### Config
 
 ```js
 // {app_root}/config/config.default.js
 exports.mongoose = {
   url: 'mongodb://127.0.0.1/example',
-  options: {}
+  options: {},
+};
+// recommended
+exports.mongoose = {
+  client: {
+    url: 'mongodb://127.0.0.1/example',
+    options: {},
+  },
 };
 ```
+
+### Example
+
+```js
+// {app_root}/app/model/user.js
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+
+  const UserSchema = new Schema({
+    userName: { type: String  },
+    password: { type: String  },
+  });
+
+  return mongoose.model('User', UserSchema);
+}
+
+// {app_root}/app/controller/user.js
+exports.index = function* (ctx) {
+  ctx.body = yield ctx.model.User.find({});
+}
+```
+
+## Multiple connections
+
+### Config
+
+```js
+// {app_root}/config/config.default.js
+exports.mongoose = {
+  clients: {
+    // clientId, access the client instance by app.mongooseDB.get('clientId')
+    db1: {
+      url: 'mongodb://127.0.0.1/example1',
+      options: {},
+    },
+    db2: {
+      url: 'mongodb://127.0.0.1/example2',
+      options: {},
+    },
+  },
+};
+```
+
+### Example
+
+```js
+// {app_root}/app/model/user.js
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const conn = app.mongooseDB.get('db1'); 
+
+  const UserSchema = new Schema({
+    userName: { type: String  },
+    password: { type: String  },
+  });
+
+  return conn.model('User', UserSchema);
+}
+
+// {app_root}/app/model/book.js
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const conn = app.mongooseDB.get('db2');
+
+  const BookSchema = new Schema({
+    name: { type: String },
+  });
+
+  return conn.model('Book', BookSchema);
+}
+
+// app/controller/user.js
+exports.index = function* (ctx) {
+  ctx.body = yield ctx.model.User.find({}); // get data from db1
+}
+
+// app/controller/book.js
+exports.index = function* (ctx) {
+  ctx.body = yield ctx.model.Book.find({}); // get data from db2
+}
+```
+
+### Default config
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
@@ -54,28 +150,13 @@ see [config/config.default.js](config/config.default.js) for more detail.
 ```js
 // {app_root}/config/config.default.js
 exports.mongoose = {
-  url: 'mongodb://mongosA:27501,mongosB:27501',
-  options: {}
+  client: {
+    url: 'mongodb://mongosA:27501,mongosB:27501',
+    options: {
+      mongos: true,
+    },
+  },
 };
-```
-
-## Example
-```js
-// app/model/user.js
-module.exports = app => {
-  const mongoose = app.mongoose;
-  const UserSchema = new mongoose.Schema({
-    userName: { type: String  },
-    password: { type: String  }
-  });
-
-  return mongoose.model('User', UserSchema);
-}
-
-// app/controller/user.js
-exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.User.find({});  // you should use upper case to access mongoose model
-}
 ```
 
 ## Questions & Suggestions

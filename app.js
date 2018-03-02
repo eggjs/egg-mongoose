@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = app => {
-  require('./lib/mongoose')(app);
+  if (app.config.mongoose.app) require('./lib/mongoose')(app);
 };
