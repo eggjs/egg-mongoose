@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "await-event": "^2.0.0",
-    "mongoose": "^4.8.6"
+    "mongoose": "^5.0.16"
   },
   "devDependencies": {
     "autod": "^2.7.1",
