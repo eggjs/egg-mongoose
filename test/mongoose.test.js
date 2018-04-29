@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 const assert = require('assert');
 const request = require('supertest');
 const mm = require('egg-mock');

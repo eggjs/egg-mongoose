@@ -1,7 +1,7 @@
 'use strict';
 
 exports.mongoose = {
-  url: 'mongodb://127.0.0.1/test',
+  url: process.env.MONGODB_URL,
   options: {},
   customPromise: require('bluebird'),
 };
