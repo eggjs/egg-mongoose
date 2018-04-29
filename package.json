@@ -1,6 +1,6 @@
 {
   "name": "egg-mongoose",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "egg mongoose plugin",
   "eggPlugin": {
     "name": "mongoose"
@@ -13,11 +13,12 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "await-event": "^2.0.0",
+    "await-first": "^1.0.0",
     "mongoose": "^5.0.16"
   },
   "devDependencies": {
     "autod": "^2.7.1",
+    "bluebird": "^3.5.1",
     "dotenv": "^5.0.1",
     "egg": "^1.0.0-rc.3",
     "egg-bin": "^2.4.0",
