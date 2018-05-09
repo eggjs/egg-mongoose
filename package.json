@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "await-first": "^1.0.0",
-    "mongoose": "^5.0.16"
+    "mongoose": "^5.0.17"
   },
   "devDependencies": {
     "autod": "^2.7.1",
