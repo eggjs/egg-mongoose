@@ -3,11 +3,11 @@
 exports.mongoose = {
   clients: {
     db1: {
-      url: 'mongodb://127.0.0.1/test1',
+      url: process.env.MONGODB_URL_1,
       options: {},
     },
     db2: {
-      url: 'mongodb://127.0.0.1/test2',
+      url: process.env.MONGODB_URL_2,
       options: {},
     },
   },

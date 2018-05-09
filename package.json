@@ -14,11 +14,12 @@
   ],
   "dependencies": {
     "await-first": "^1.0.0",
-    "mongoose": "^4.8.6"
+    "mongoose": "^5.0.17"
   },
   "devDependencies": {
     "autod": "^2.7.1",
     "bluebird": "^3.5.1",
+    "dotenv": "^5.0.1",
     "egg": "^1.0.0-rc.3",
     "egg-bin": "^2.4.0",
     "egg-mock": "^3.1.2",
