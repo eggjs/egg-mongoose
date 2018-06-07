@@ -74,9 +74,15 @@ module.exports = app => {
 }
 
 // {app_root}/app/controller/user.js
-exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.User.find({});
+const Controller = require('egg').Controller;
+
+class UserController extends Controller {
+  async index() {
+    this.ctx.body = await this.ctx.model.User.find({}).exec();
+  }
 }
+
+module.exports = UserController;
 ```
 
 ## Multiple connections
@@ -131,14 +137,26 @@ module.exports = app => {
 }
 
 // app/controller/user.js
-exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.User.find({}); // get data from db1
+const Controller = require('egg').Controller;
+
+class UserController extends Controller {
+  async index() {
+    this.ctx.body = await this.ctx.model.User.find({}).exec();
+  }
 }
 
+module.exports = UserController;
+
 // app/controller/book.js
-exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.Book.find({}); // get data from db2
+const Controller = require('egg').Controller;
+
+class BookController extends Controller {
+  async index() {
+    this.ctx.body = await this.ctx.model.Book.find({}).exec();
+  }
 }
+
+module.exports = BookController;
 ```
 
 ### Default config
