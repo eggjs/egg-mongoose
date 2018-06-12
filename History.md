@@ -1,4 +1,10 @@
 
+3.0.0 / 2018-06-12
+==================
+
+**features**
+  * [[`a3405d6`](http://github.com/eggjs/egg-mongoose/commit/a3405d60d0bf173a000706681cb6656b6ef6a7ed)] - feat: bump mongoose version to 5.0 (#20) (Hardy <<hardywu@users.noreply.github.com>>)
+
 2.2.1 / 2018-04-28
 ==================
 
