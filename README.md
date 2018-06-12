@@ -38,6 +38,20 @@ exports.mongoose = {
 };
 ```
 
+If you use TypeScript, use config below
+
+```ts
+// {app_root}/config/plugin.ts
+export default {
+  // ...
+  mongoose: {
+    enable: true,
+    package: 'egg-mongoose',
+  },
+  // ...
+};
+```
+
 ## Simple connection
 
 ### Config
@@ -57,6 +71,25 @@ exports.mongoose = {
 };
 ```
 
+TypeScript
+```ts
+// {app_root}/config/config.default.ts
+export default (appInfo: EggAppConfig) => {
+
+  //...
+
+  config.mongoose = {
+      client: {
+        url: 'mongodb://127.0.0.1/example',
+        options: {},
+        },
+      },
+    };
+
+  //...
+}
+```
+
 ### Example
 
 ```js
@@ -74,8 +107,29 @@ module.exports = app => {
 }
 
 // {app_root}/app/controller/user.js
-exports.index = function* (ctx) {
-  ctx.body = yield ctx.model.User.find({});
+exports.index = async (ctx) => {
+  ctx.body = await ctx.model.User.find({});
+}
+```
+
+TypeScript
+```ts
+// {app_root}/app/model/user.ts
+export default (app) => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+
+  const UserSchema = new Schema({
+    userName: { type: String  },
+    password: { type: String  },
+  });
+
+  return mongoose.model('User', UserSchema);
+}
+
+// {app_root}/app/controller/user.ts
+export const index = async (ctx) => {
+  ctx.body = await ctx.model.User.find({});
 }
 ```
 
@@ -98,6 +152,33 @@ exports.mongoose = {
     },
   },
 };
+```
+
+
+
+TypeScript
+```ts
+// {app_root}/config/config.default.ts
+export default (appInfo: EggAppConfig) => {
+
+  // ...
+
+  config.mongoose = {
+      clients: {
+        // clientId, access the client instance by app.mongooseDB.get('clientId')
+        db1: {
+          url: 'mongodb://127.0.0.1/example1',
+          options: {},
+        },
+        db2: {
+          url: 'mongodb://127.0.0.1/example2',
+          options: {},
+        },
+    },
+  };
+
+  // ...
+}
 ```
 
 ### Example
@@ -141,9 +222,49 @@ exports.index = function* (ctx) {
 }
 ```
 
+TypeScript
+```ts
+// {app_root}/app/model/user.ts
+export default (app) => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const conn = app.mongooseDB.get('db1');
+
+  const UserSchema = new Schema({
+    userName: { type: String  },
+    password: { type: String  },
+  });
+
+  return conn.model('User', UserSchema);
+}
+
+// {app_root}/app/model/book.ts
+export default (app) => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const conn = app.mongooseDB.get('db2');
+
+  const BookSchema = new Schema({
+    name: { type: String },
+  });
+
+  return conn.model('Book', BookSchema);
+}
+
+// app/controller/user.ts
+export const index = async (ctx) => {
+  ctx.body = await ctx.model.User.find({}); // get data from db1
+}
+
+// app/controller/book.ts
+export const index = async (ctx) => {
+  ctx.body = await ctx.model.Book.find({}); // get data from db2
+}
+```
+
 ### Default config
 
-see [config/config.default.js](config/config.default.js) for more detail.
+see [config/config.default.js](config/config.default.js) or [config/config.default.ts](config/config.default.ts)(for TypeScript) for more detail.
 
 ## Multi-mongos support
 
