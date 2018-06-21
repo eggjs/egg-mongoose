@@ -159,6 +159,41 @@ exports.mongoose = {
 };
 ```
 
+## Custom Model Name
+
+### Config
+
+```js
+// {app_root}/config/config.default.js
+exports.mongoose = {
+  url: 'mongodb://127.0.0.1/example',
+  options: {},
+  modelName: 'mongoModel'
+};
+```
+
+### Example
+
+```js
+// {app_root}/app/mongoModel/book.js
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const conn = app.mongooseDB.get('db2');
+
+  const BookSchema = new Schema({
+    name: { type: String },
+  });
+
+  return conn.model('Book', BookSchema);
+}
+
+// app/controller/book.js
+exports.index = function* (ctx) {
+  ctx.body = yield ctx.mongoModel.Book.find({});
+}
+```
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg-mongoose/issues).

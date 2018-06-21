@@ -13,4 +13,5 @@ exports.mongoose = {
   loadModel: true,
   app: true,
   agent: false,
+  modelName: 'model',
 };
