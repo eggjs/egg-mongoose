@@ -17,6 +17,7 @@
     "mongoose": "^5.0.17"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.0.18",
     "autod": "^2.7.1",
     "bluebird": "^3.5.1",
     "dotenv": "^5.0.1",
@@ -41,6 +42,7 @@
   },
   "files": [
     "index.js",
+    "index.d.ts",
     "app.js",
     "agent.js",
     "config",
