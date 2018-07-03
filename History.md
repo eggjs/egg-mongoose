@@ -1,4 +1,10 @@
 
+3.1.0 / 2018-07-03
+==================
+
+**others**
+  * [[`a8b4ece`](http://github.com/eggjs/egg-mongoose/commit/a8b4ece79726ac591da2f1a4a0b97f9cc350c69c)] - chore: TypeScript support (#22) (Baffin Lee <<baffinlee@gmail.com>>)
+
 3.0.0 / 2018-06-12
 ==================
 
