@@ -67,9 +67,9 @@ describe('test/mongoose.test.js', () => {
       app.mockCsrf();
 
       yield request(app.callback())
-      .post('/books')
-      .send({ name: 'mongoose' })
-      .expect(200);
+        .post('/books')
+        .send({ name: 'mongoose' })
+        .expect(200);
 
       const res = yield request(app.callback()).get('/books');
       assert(res.body[0].name === 'mongoose');
@@ -202,6 +202,34 @@ describe('test/mongoose.test.js', () => {
       assert(app.model.Book.prototype instanceof app.mongoose.Model);
       assert(app.model.book === undefined);
       assert(app.model.Other === undefined);
+    });
+  });
+
+  describe('custom model name', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-customModelName',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.mongoModel.Book.remove({});
+      yield app.mongoModel.User.remove({});
+    });
+
+    it('should has app mongoModel property', function* () {
+      assert(app.mongoModel);
+      assert(app.mongoModel.User.prototype instanceof app.mongoose.Model);
+      assert(app.mongoModel.user === undefined);
+      assert(app.mongoModel.Book.prototype instanceof app.mongoose.Model);
+      assert(app.mongoModel.book === undefined);
+      assert(app.mongoModel.Other === undefined);
     });
   });
 
