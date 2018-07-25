@@ -13,9 +13,9 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "@types/mongoose": "^5.0.18",
+    "@types/mongoose": "^5.2.2",
     "await-first": "^1.0.0",
-    "mongoose": "^5.0.17"
+    "mongoose": "^5.2.5"
   },
   "devDependencies": {
     "autod": "^2.7.1",
