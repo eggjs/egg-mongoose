@@ -6,5 +6,5 @@ module.exports = app => {
     name: { type: String },
   });
 
-  return mongoose.model('User', UserSchema);
+  return mongoose.model('User', UserSchema, null, { cache: false });
 };

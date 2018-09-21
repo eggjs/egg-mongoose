@@ -10,4 +10,7 @@
 exports.mongoose = {
   url: '',
   options: {},
+  loadModel: true,
+  app: true,
+  agent: false,
 };
