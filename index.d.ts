@@ -18,7 +18,7 @@ declare module 'egg' {
 
   // extend app
   interface Application {
-    mongooseDB: mongoose.Connection | MongooseSingleton;
+    mongooseDB: MongooseSingleton & mongoose.Connection;
     mongoose: typeof mongoose;
     model: MongooseModels;
   }
