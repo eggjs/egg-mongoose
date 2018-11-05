@@ -1,4 +1,13 @@
 
+3.1.1 / 2018-11-05
+==================
+
+**fixes**
+  * [[`de7e54e`](http://github.com/eggjs/egg-mongoose/commit/de7e54e21c1ca1848968395b236151255e404a11)] - fix(typescript): types of mongoose should be dependencies (#24) (Baffin Lee <<baffinlee@gmail.com>>)
+
+**others**
+  * [[`8bb46d5`](http://github.com/eggjs/egg-mongoose/commit/8bb46d5e7f2d2769989cbf42ad3f07f40cf3d661)] - chore: Add an arg in options for the update of mongodb (#29) (Maledong <<maledong_github@outlook.com>>)
+
 3.1.0 / 2018-07-03
 ==================
 
