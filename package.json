@@ -1,6 +1,6 @@
 {
   "name": "egg-mongoose",
-  "version": "2.2.0",
+  "version": "3.1.1",
   "description": "egg mongoose plugin",
   "eggPlugin": {
     "name": "mongoose"
@@ -13,16 +13,20 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "await-event": "^2.0.0",
-    "mongoose": "^4.8.6"
+    "@types/mongoose": "^5.0.18",
+    "await-first": "^1.0.0",
+    "mongoose": "^5.0.17"
   },
   "devDependencies": {
+    "mocha": "^5.2.0",
     "autod": "^2.7.1",
+    "bluebird": "^3.5.1",
+    "dotenv": "^5.0.1",
     "egg": "^1.0.0-rc.3",
-    "egg-bin": "^2.4.0",
+    "egg-bin": "^4.9.0",
     "egg-mock": "^3.1.2",
     "eslint": "^3.17.1",
-    "eslint-config-egg": "^3.2.0",
+    "eslint-config-egg": "^7.1.0",
     "supertest": "^3.0.0",
     "webstorm-disable-index": "^1.1.2"
   },
@@ -39,6 +43,7 @@
   },
   "files": [
     "index.js",
+    "index.d.ts",
     "app.js",
     "agent.js",
     "config",
@@ -46,7 +51,7 @@
     "lib"
   ],
   "ci": {
-    "version": "6, 7"
+    "version": "8, 10"
   },
   "repository": {
     "type": "git",

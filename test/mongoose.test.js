@@ -1,8 +1,11 @@
 'use strict';
 
+require('dotenv').config();
 const assert = require('assert');
 const request = require('supertest');
 const mm = require('egg-mock');
+const mongoose = require('mongoose');
+const EventEmitter = require('events');
 
 describe('test/mongoose.test.js', () => {
   describe('base', () => {
@@ -199,6 +202,57 @@ describe('test/mongoose.test.js', () => {
       assert(app.model.Book.prototype instanceof app.mongoose.Model);
       assert(app.model.book === undefined);
       assert(app.model.Other === undefined);
+    });
+  });
+
+  describe('throws on first connection', () => {
+    let app;
+    const createConnection = mongoose.createConnection;
+    let connection;
+    let onCreateConnection;
+    beforeEach(function* () {
+      connection = new EventEmitter();
+      mongoose.createConnection = () => {
+        setTimeout(onCreateConnection, 10);
+        return connection;
+      };
+    });
+
+    afterEach(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(() => {
+      connection = null;
+      onCreateConnection = null;
+      mongoose.createConnection = createConnection;
+    });
+
+    it('should establish first connection', function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose',
+      });
+      onCreateConnection = () => {
+        connection.emit('connected');
+      };
+      yield app.ready();
+    });
+
+    it('should rethrow on first connection', function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose',
+      });
+      onCreateConnection = () => {
+        connection.emit('error', new Error('foobar'));
+      };
+      try {
+        yield app.ready();
+      } catch (err) {
+        assert(err != null);
+        assert(err.message === '[egg-mongoose]foobar');
+        return;
+      }
+      assert.fail('shall not succeeded');
     });
   });
 });
