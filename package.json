@@ -15,10 +15,10 @@
   "dependencies": {
     "@types/mongoose": "^5.0.18",
     "await-first": "^1.0.0",
-    "mongoose": "^5.0.17"
+    "mongoose": "^5.0.17",
+    "url-mask": "^1.0.5"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
     "autod": "^2.7.1",
     "bluebird": "^3.5.1",
     "dotenv": "^5.0.1",
@@ -27,6 +27,7 @@
     "egg-mock": "^3.1.2",
     "eslint": "^3.17.1",
     "eslint-config-egg": "^7.1.0",
+    "mocha": "^5.2.0",
     "supertest": "^3.0.0",
     "webstorm-disable-index": "^1.1.2"
   },
