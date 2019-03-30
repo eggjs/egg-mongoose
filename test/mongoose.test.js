@@ -82,9 +82,9 @@ describe('test/mongoose.test.js', () => {
 
     it('should filter password of url', () => {
       const filterURLPassword = require('../lib/filterURLPassword');
-      const url = 'https://abc:xyz@example.com';
+      const url = 'https://abc:xyz@example.com/';
       const output = filterURLPassword(url);
-      assert.equal(output, 'https://abc:*****@example.com');
+      assert.equal(output, 'https://abc:*****@example.com/');
     });
   });
 
