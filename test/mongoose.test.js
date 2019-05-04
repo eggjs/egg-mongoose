@@ -79,6 +79,17 @@ describe('test/mongoose.test.js', () => {
       const query = app.model.User.findOne({});
       assert.equal(query.exec().constructor, Promise);
     });
+
+    it('should filter password of url', () => {
+      const filterURLPassword = require('../lib/filterURLPassword');
+      const url = 'https://abc:xyz@example.com/';
+      const outputV10 = filterURLPassword(url, 'v10.0.0');
+      assert.equal(outputV10, 'https://abc:*****@example.com/');
+      const outputV8 = filterURLPassword(url, 'v8.0.0');
+      assert.equal(outputV8, 'https://abc:*****@example.com/');
+      const outputV6 = filterURLPassword(url, 'v6.0.0');
+      assert.equal(outputV6, 'https://abc:*****@example.com/');
+    });
   });
 
   describe('custom promise', () => {
