@@ -266,4 +266,32 @@ describe('test/mongoose.test.js', () => {
       assert.fail('shall not succeeded');
     });
   });
+
+  describe('global plugins', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-plugin',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.model.Book.remove({});
+      yield app.model.User.remove({});
+    });
+
+    it('should has model extra property', function* () {
+      const user = yield app.model.User.create({});
+      const book = yield app.model.Book.create({});
+      assert(user);
+      assert(user.lastMod instanceof Date);
+      assert(book);
+      assert(book.lastMod instanceof Date);
+    });
+  });
 });

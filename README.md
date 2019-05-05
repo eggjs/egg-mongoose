@@ -47,12 +47,14 @@ exports.mongoose = {
 exports.mongoose = {
   url: 'mongodb://127.0.0.1/example',
   options: {},
+  plugins: [], // mongoose global plugins
 };
 // recommended
 exports.mongoose = {
   client: {
     url: 'mongodb://127.0.0.1/example',
     options: {},
+    plugins: [], // mongoose global plugins
   },
 };
 ```
