@@ -1,4 +1,13 @@
 
+3.1.2 / 2019-05-05
+==================
+
+**fixes**
+  * [[`441b6fc`](http://github.com/eggjs/egg-mongoose/commit/441b6fcf0264fec76415e682e5b180ecc6488799)] - fix: hide password of mongo url (#32) (CHANG, TZU-YEN <<try_love_tom@icloud.com>>)
+
+**others**
+  * [[`0c15d08`](http://github.com/eggjs/egg-mongoose/commit/0c15d0887f7d171858a3adc1ba6356d6b04c06a1)] - Update Dependencies And Lint Code (#33) (CHANG, TZU-YEN <<try_love_tom@icloud.com>>)
+
 3.1.1 / 2018-11-05
 ==================
 
