@@ -1,4 +1,10 @@
 
+3.1.3 / 2019-05-06
+==================
+
+**fixes**
+  * [[`5b9f8ba`](http://github.com/eggjs/egg-mongoose/commit/5b9f8ba36673ea4b807b7cd97f4288bbef6c8f2d)] - fix: replace auth with string replace (#34) (TZ | 天猪 <<atian25@qq.com>>)
+
 3.1.2 / 2019-05-05
 ==================
 
