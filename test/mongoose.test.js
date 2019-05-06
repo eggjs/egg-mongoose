@@ -82,13 +82,9 @@ describe('test/mongoose.test.js', () => {
 
     it('should filter password of url', () => {
       const filterURLPassword = require('../lib/filterURLPassword');
-      const url = 'https://abc:xyz@example.com/';
-      const outputV10 = filterURLPassword(url, 'v10.0.0');
-      assert.equal(outputV10, 'https://abc:*****@example.com/');
-      const outputV8 = filterURLPassword(url, 'v8.0.0');
-      assert.equal(outputV8, 'https://abc:*****@example.com/');
-      const outputV6 = filterURLPassword(url, 'v6.0.0');
-      assert.equal(outputV6, 'https://abc:*****@example.com/');
+      assert(filterURLPassword('https://example.com/') === 'https://example.com/');
+      assert(filterURLPassword('https://abc:xyz@example.com/') === 'https://abc:******@example.com/');
+      assert(filterURLPassword('mongodb://abc:xyz@mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/admin?replicaSet=myRepl') === 'mongodb://abc:******@mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/admin?replicaSet=myRepl');
     });
   });
 

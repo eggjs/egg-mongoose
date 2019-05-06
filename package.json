@@ -15,8 +15,7 @@
   "dependencies": {
     "@types/mongoose": "^5.3.24",
     "await-first": "^1.0.0",
-    "mongoose": "^5.4.20",
-    "semver": "^6.0.0"
+    "mongoose": "^5.4.20"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -52,7 +51,7 @@
     "lib"
   ],
   "ci": {
-    "version": "8, 10"
+    "version": "8, 10, 12"
   },
   "repository": {
     "type": "git",
