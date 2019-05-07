@@ -286,8 +286,10 @@ describe('test/mongoose.test.js', () => {
       const book = yield app.model.Book.create({});
       assert(user);
       assert(user.lastMod instanceof Date);
+      assert(user.updatedAt instanceof Date);
       assert(book);
       assert(book.lastMod instanceof Date);
+      assert(book.updatedAt instanceof Date);
     });
   });
 });
