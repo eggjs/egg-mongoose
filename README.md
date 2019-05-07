@@ -47,14 +47,16 @@ exports.mongoose = {
 exports.mongoose = {
   url: 'mongodb://127.0.0.1/example',
   options: {},
-  plugins: [], // mongoose global plugins
+  // mongoose global plugins, expected a function or an array of function and options
+  plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
 };
 // recommended
 exports.mongoose = {
   client: {
     url: 'mongodb://127.0.0.1/example',
     options: {},
-    plugins: [], // mongoose global plugins
+    // mongoose global plugins, expected a function or an array of function and options
+    plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
   },
 };
 ```

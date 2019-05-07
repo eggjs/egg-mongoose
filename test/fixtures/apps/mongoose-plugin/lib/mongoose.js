@@ -4,11 +4,12 @@ module.exports = {
   lastModifiedPlugin,
 };
 
-function lastModifiedPlugin(schema) {
-  schema.add({ lastMod: Date });
+function lastModifiedPlugin(schema, options = {}) {
+  const { field = 'lastMod' } = options;
+  schema.add({ [field]: Date });
 
   schema.pre('save', function(next) {
-    this.lastMod = new Date();
+    this.$set(field, new Date());
     next();
   });
 }
