@@ -1,4 +1,10 @@
 
+3.2.0 / 2019-05-16
+==================
+
+**features**
+  * [[`1f450fb`](http://github.com/eggjs/egg-mongoose/commit/1f450fb38acf4f04a63294a33e392c6f38830a88)] - feat: support mongoose global plugin (#35) (lkspc <<lkspc@qq.com>>)
+
 3.1.3 / 2019-05-06
 ==================
 
