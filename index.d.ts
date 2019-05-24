@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 declare module 'egg' {
 
   type MongooseModels = {
-    [key: string]: mongoose.Model<any>
+    [key: string]: mongoose.Model
   };
 
   type MongooseSingleton = {
