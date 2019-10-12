@@ -114,8 +114,8 @@ module.exports = app => {
   const conn = app.mongooseDB.get('db1'); 
 
   const UserSchema = new Schema({
-    userName: { type: String  },
-    password: { type: String  },
+    userName: { type: String },
+    password: { type: String },
   });
 
   return conn.model('User', UserSchema);
