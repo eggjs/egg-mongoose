@@ -292,4 +292,35 @@ describe('test/mongoose.test.js', () => {
       assert(book.updatedAt instanceof Date);
     });
   });
+
+
+  describe('multi client plugins', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-multi-client-plugins',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.model.Book.remove({});
+      yield app.model.User.remove({});
+    });
+
+    it('should has model extra property', function* () {
+      const user = yield app.model.User.create({});
+      const book = yield app.model.Book.create({});
+      assert(user);
+      assert(user.lastMod instanceof Date);
+      assert(user.updatedAt instanceof Date);
+      assert(book);
+      assert(book.lastMod instanceof Date);
+      assert(book.updatedAt instanceof Date);
+    });
+  });
 });
