@@ -15,7 +15,8 @@
   "dependencies": {
     "@types/mongoose": "^5.3.24",
     "await-first": "^1.0.0",
-    "mongoose": "^5.4.20"
+    "mongoose": "^5.4.20",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -39,7 +40,9 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "files": [
     "index.js",
@@ -59,5 +62,6 @@
   },
   "bugs": {
     "url": "https://github.com/eggjs/egg/issues"
-  }
+  },
+  "snyk": true
 }
