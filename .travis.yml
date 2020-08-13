@@ -12,3 +12,5 @@ after_script:
   - npminstall codecov && codecov
 services:
   - mongodb
+cache:
+  npm: false
