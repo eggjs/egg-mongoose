@@ -11,6 +11,7 @@ exports.mongoose = {
   url: '',
   options: {},
   plugins: [],
+  modelDir: 'app/model',
   loadModel: true,
   app: true,
   agent: false,
