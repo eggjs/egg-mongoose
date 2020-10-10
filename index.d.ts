@@ -13,7 +13,10 @@ declare module 'egg' {
 
   type MongooseConfig = {
     url: string,
-    options?: mongoose.ConnectionOptions
+    options?: mongoose.ConnectionOptions,
+    loadModel?: boolean,
+    delegate?: string,
+    modelDir?: string
   };
 
   // extend app
@@ -36,7 +39,10 @@ declare module 'egg' {
       client?: MongooseConfig,
       clients?: {
         [key: string]: MongooseConfig
-      }
+      },
+      loadModel?: boolean,
+      delegate?: string,
+      modelDir?: string
     };
   }
 

@@ -2,7 +2,7 @@
 
 exports.mongoose = {
   loadModel: false,
-  modelDir: 'mongo',
+  delegate: 'mongo',
 };
 
 exports.mymongoose = {
