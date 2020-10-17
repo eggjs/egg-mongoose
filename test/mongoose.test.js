@@ -212,6 +212,70 @@ describe('test/mongoose.test.js', () => {
     });
   });
 
+  describe('custom loadModel and set delegate', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-loadModel-delegate',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.mongo.Book.remove({});
+      yield app.mongo.User.remove({});
+    });
+
+    it('should has app custom mymongoose', function* () {
+      assert(app.mymongoose);
+    });
+
+    it('should has app mongo property', function* () {
+      assert(app.mongo);
+      assert(app.mongo.User.prototype instanceof app.mongoose.Model);
+      assert(app.mongo.user === undefined);
+      assert(app.mongo.Book.prototype instanceof app.mongoose.Model);
+      assert(app.mongo.book === undefined);
+      assert(app.mongo.Other === undefined);
+    });
+  });
+
+  describe('custom loadModel and set model directory', () => {
+    let app;
+    before(function* () {
+      app = mm.app({
+        baseDir: 'apps/mongoose-loadModel-modelDir',
+      });
+      yield app.ready();
+    });
+
+    after(function* () {
+      yield app.close();
+    });
+    afterEach(mm.restore);
+    afterEach(function* () {
+      yield app.model.Book.remove({});
+      yield app.model.User.remove({});
+    });
+
+    it('should has app custom mymongoose', function* () {
+      assert(app.mymongoose);
+    });
+
+    it('should has app model property', function* () {
+      assert(app.model);
+      assert(app.model.User.prototype instanceof app.mongoose.Model);
+      assert(app.model.user === undefined);
+      assert(app.model.Book.prototype instanceof app.mongoose.Model);
+      assert(app.model.book === undefined);
+      assert(app.model.Other === undefined);
+    });
+  });
+
   describe('throws on first connection', () => {
     let app;
     const createConnection = mongoose.createConnection;

@@ -12,6 +12,8 @@ exports.mongoose = {
   options: {},
   plugins: [],
   loadModel: true,
+  modelDir: 'model', // load all models to `app[delegate]` and `ctx[delegate]`, default to `model`
+  delegate: 'model', // load all files in `app/${baseDir}` as models, default to `model`
   app: true,
   agent: false,
 };
