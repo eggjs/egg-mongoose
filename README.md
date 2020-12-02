@@ -49,6 +49,8 @@ exports.mongoose = {
   options: {},
   // mongoose global plugins, expected a function or an array of function and options
   plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
+  delegate: 'model',
+  baseDir: 'model',
 };
 // recommended
 exports.mongoose = {
@@ -57,6 +59,8 @@ exports.mongoose = {
     options: {},
     // mongoose global plugins, expected a function or an array of function and options
     plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
+    delegate: 'model',
+    baseDir: 'model',
   },
 };
 ```
@@ -96,11 +100,15 @@ exports.mongoose = {
       url: 'mongodb://127.0.0.1/example1',
       options: {},
       // client scope plugin array
-      plugins: []
+      plugins: [],
+      delegate: 'model1',
+      baseDir: 'model1',
     },
     db2: {
       url: 'mongodb://127.0.0.1/example2',
       options: {},
+      delegate: 'model2',
+      baseDir: 'model2',
     },
   },
   // public scope plugin array

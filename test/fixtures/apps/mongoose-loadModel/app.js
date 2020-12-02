@@ -2,5 +2,5 @@
 
 module.exports = app => {
   app.mymongoose = app.mongooseDB.createInstance(app.config.mymongoose);
-  app.mongoose.loadModel();
+  app.mongoose.loadModel(app.config.mymongoose);
 };
