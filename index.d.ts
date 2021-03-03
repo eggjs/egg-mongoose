@@ -36,7 +36,8 @@ declare module 'egg' {
       client?: MongooseConfig,
       clients?: {
         [key: string]: MongooseConfig
-      }
+      },
+      plugins?:  Array<(schema: mongoose.Schema, opts?: any) => void>
     };
   }
 
