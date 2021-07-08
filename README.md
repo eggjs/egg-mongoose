@@ -167,6 +167,35 @@ exports.mongoose = {
 };
 ```
 
+## Typescript
+
+```typescript
+// {app_root}/app/model/user.ts
+import { Application } from 'egg';
+import * as mongoose from 'mongoose';
+
+interface User {
+  userName: string;
+}
+
+export default (app: Application) => {
+  const Schema = app.mongoose.Schema;
+  const UserSchema = new Schema({
+    userName: { type: String },
+  }, {
+    timestamps: true,
+  });
+
+  return app.mongoose.model('User', UserSchema);
+};
+
+declare module 'egg' {
+  interface MongooseModels {
+    User: mongoose.Model<User>;
+  }
+}
+```
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg-mongoose/issues).
