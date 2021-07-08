@@ -2,19 +2,19 @@ import * as mongoose from 'mongoose';
 
 declare module 'egg' {
 
-  type MongooseModels = {
+  interface MongooseModels {
     [key: string]: mongoose.Model<any>
-  };
+  }
 
-  type MongooseSingleton = {
+  interface MongooseSingleton {
     clients: Map<string, mongoose.Connection>,
     get (id: string) : mongoose.Connection
-  };
+  }
 
-  type MongooseConfig = {
+  interface MongooseConfig {
     url: string,
     options?: mongoose.ConnectionOptions
-  };
+  }
 
   // extend app
   interface Application {
