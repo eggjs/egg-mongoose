@@ -14,4 +14,6 @@ exports.mongoose = {
   loadModel: true,
   app: true,
   agent: false,
+  baseDir:'model',
+  delegate:'model'
 };
