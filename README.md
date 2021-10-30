@@ -52,6 +52,8 @@ exports.mongoose = {
 };
 // recommended
 exports.mongoose = {
+  //baseDir:'model', //models in `app/${model}`
+  //delegate:'model' //lood to `app[delegate]`
   client: {
     url: 'mongodb://127.0.0.1/example',
     options: {},

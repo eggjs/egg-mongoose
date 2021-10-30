@@ -14,6 +14,6 @@ exports.mongoose = {
   loadModel: true,
   app: true,
   agent: false,
-  baseDir:'model',
-  delegate:'model'
+  baseDir:'model', //models in `app/${model}`,the deafault is `app/model`
+  delegate:'model' //lood to `app[delegate]`,the deafault is app.model 
 };
