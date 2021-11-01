@@ -1,6 +1,6 @@
 {
   "name": "@onewalker/egg-mongoose",
-  "version": "3.3.2.1",
+  "version": "3.3.3",
   "description": "the new version of egg mongoose plugins",
   "eggPlugin": {
     "name": "mongoose"
