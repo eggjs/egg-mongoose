@@ -17,14 +17,18 @@
 [snyk-image]: https://snyk.io/test/npm/egg-mongoose/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-mongoose
 [download-image]: https://img.shields.io/npm/dm/egg-mongoose.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-mongoose
+[download-url]: https://npmjs.org/package/@oneWalker/egg-mongoose
 
 Egg's mongoose plugin.
+
+## Notice
+
+The version of Egg's mongoose plugin add two new features, place the model files in the location you want and rename the delegate property to `Context`. It published for the original one seems like not to be maintained by the maintainers. When the original one merge the reuqest, you can also use the original one.
 
 ## Install
 
 ```bash
-$ npm i egg-mongoose --save
+$ npm i @onewalker/egg-mongoose --save
 ```
 
 ## Configuration
