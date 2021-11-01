@@ -6,8 +6,8 @@
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/egg-mongoose.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-mongoose
+[npm-image]: https://img.shields.io/npm/@oneWalker/egg-mongoose.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@oneWalker/egg-mongoose
 [travis-image]: https://img.shields.io/travis/eggjs/egg-mongoose.svg?style=flat-square
 [travis-url]: https://travis-ci.org/eggjs/egg-mongoose
 [codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-mongoose.svg?style=flat-square
@@ -16,7 +16,7 @@
 [david-url]: https://david-dm.org/eggjs/egg-mongoose
 [snyk-image]: https://snyk.io/test/npm/egg-mongoose/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-mongoose
-[download-image]: https://img.shields.io/npm/dm/egg-mongoose.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@oneWalker/egg-mongoose.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@oneWalker/egg-mongoose
 
 Egg's mongoose plugin.
