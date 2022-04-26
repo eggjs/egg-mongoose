@@ -13,7 +13,6 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "@types/mongoose": "^5.3.24",
     "await-first": "^1.0.0",
     "mongoose": "^5.10.9"
   },
