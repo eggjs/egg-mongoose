@@ -175,7 +175,7 @@ exports.mongoose = {
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg-mongoose/issues).
+Please open an issue [here](https://github.com/oneWalker/egg-mongoose/issues).
 
 ## Contribution
 
