@@ -13,25 +13,24 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "@types/mongoose": "^5.3.24",
     "await-first": "^1.0.0",
-    "mongoose": "^5.10.9"
+    "mongoose": "^7.2.2"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
+    "autod": "^3.1.2",
     "bluebird": "^3.5.1",
     "dotenv": "^7.0.0",
-    "egg": "^2.20.2",
-    "egg-bin": "^4.9.0",
-    "egg-mock": "^3.1.2",
+    "egg": "^3.16.0",
+    "egg-bin": "^6.4.1",
+    "egg-mock": "^5.10.7",
     "eslint": "^5.15.3",
     "eslint-config-egg": "^7.1.0",
-    "mocha": "^6.0.2",
+    "mocha": "^10.2.0",
     "supertest": "^4.0.2",
     "webstorm-disable-index": "^1.1.2"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "test": "npm run lint -- --fix && npm run test-local",
@@ -51,7 +50,7 @@
     "lib"
   ],
   "ci": {
-    "version": "8, 10, 12"
+    "version": "14, 16, 18"
   },
   "repository": {
     "type": "git",
@@ -61,3 +60,4 @@
     "url": "https://github.com/eggjs/egg/issues"
   }
 }
+
