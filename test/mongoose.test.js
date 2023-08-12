@@ -97,8 +97,8 @@ describe('test/mongoose.test.js', () => {
       yield app.ready();
     });
 
-    after(() => {
-      app.close();
+    after(function* () {
+      yield app.close();
     });
     afterEach(mm.restore);
     afterEach(function* () {
@@ -121,8 +121,8 @@ describe('test/mongoose.test.js', () => {
       yield app.ready();
     });
 
-    after(() => {
-      app.close();
+    after(function* () {
+      yield app.close();
     });
     afterEach(mm.restore);
     afterEach(function* () {
@@ -155,7 +155,7 @@ describe('test/mongoose.test.js', () => {
       yield app.ready();
     });
 
-    after(() => {
+    after(function* () {
       app.close();
     });
     afterEach(mm.restore);

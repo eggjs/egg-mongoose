@@ -13,7 +13,7 @@ declare module 'egg' {
 
   type MongooseConfig = {
     url: string,
-    options?: mongoose.ConnectionOptions
+    options?: mongoose.ConnectOptions
   };
 
   // extend app
@@ -32,7 +32,7 @@ declare module 'egg' {
   interface EggAppConfig {
     mongoose: {
       url?: string,
-      options?: mongoose.ConnectionOptions,
+      options?: mongoose.ConnectOptions,
       client?: MongooseConfig,
       clients?: {
         [key: string]: MongooseConfig
