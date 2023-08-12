@@ -1,19 +1,15 @@
 # egg-mongoose
+
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![Run tests](https://github.com/eggjs/egg-mongoose/actions/workflows/autoUnitTest.yml/badge.svg)](https://github.com/eggjs/egg-mongoose/actions/workflows/autoUnitTest.yml)
 [![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/egg-mongoose.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-mongoose
-[travis-image]: https://img.shields.io/travis/eggjs/egg-mongoose.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-mongoose
 [codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-mongoose.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/eggjs/egg-mongoose?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-mongoose.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-mongoose
 [snyk-image]: https://snyk.io/test/npm/egg-mongoose/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-mongoose
 [download-image]: https://img.shields.io/npm/dm/egg-mongoose.svg?style=flat-square
@@ -24,7 +20,7 @@ Egg's mongoose plugin.
 ## Install
 
 ```bash
-$ npm i egg-mongoose --save
+npm i egg-mongoose --save
 ```
 
 ## Configuration
@@ -178,3 +174,16 @@ If you are a contributor, follow [CONTRIBUTING](https://eggjs.org/zh-cn/contribu
 ## License
 
 [MIT](LICENSE)
+
+<!-- GITCONTRIBUTOR_START -->
+
+## Contributors
+
+|[<img src="https://avatars.githubusercontent.com/u/893152?v=4" width="100px;"/><br/><sub><b>jtyjty99999</b></sub>](https://github.com/jtyjty99999)<br/>|[<img src="https://avatars.githubusercontent.com/u/360661?v=4" width="100px;"/><br/><sub><b>popomore</b></sub>](https://github.com/popomore)<br/>|[<img src="https://avatars.githubusercontent.com/u/227713?v=4" width="100px;"/><br/><sub><b>atian25</b></sub>](https://github.com/atian25)<br/>|[<img src="https://avatars.githubusercontent.com/u/985607?v=4" width="100px;"/><br/><sub><b>dead-horse</b></sub>](https://github.com/dead-horse)<br/>|[<img src="https://avatars.githubusercontent.com/u/17738556?v=4" width="100px;"/><br/><sub><b>BaffinLee</b></sub>](https://github.com/BaffinLee)<br/>|[<img src="https://avatars.githubusercontent.com/u/13268073?v=4" width="100px;"/><br/><sub><b>trylovetom</b></sub>](https://github.com/trylovetom)<br/>|
+| :---: | :---: | :---: | :---: | :---: | :---: |
+|[<img src="https://avatars.githubusercontent.com/u/9605663?v=4" width="100px;"/><br/><sub><b>ChangedenCZD</b></sub>](https://github.com/ChangedenCZD)<br/>|[<img src="https://avatars.githubusercontent.com/u/954064?v=4" width="100px;"/><br/><sub><b>hardywu</b></sub>](https://github.com/hardywu)<br/>|[<img src="https://avatars.githubusercontent.com/u/7105264?v=4" width="100px;"/><br/><sub><b>JasinYip</b></sub>](https://github.com/JasinYip)<br/>|[<img src="https://avatars.githubusercontent.com/u/549979?v=4" width="100px;"/><br/><sub><b>netputer</b></sub>](https://github.com/netputer)<br/>|[<img src="https://avatars.githubusercontent.com/u/52018749?v=4" width="100px;"/><br/><sub><b>Wai-Dung</b></sub>](https://github.com/Wai-Dung)<br/>|[<img src="https://avatars.githubusercontent.com/u/7284558?v=4" width="100px;"/><br/><sub><b>duncup</b></sub>](https://github.com/duncup)<br/>|
+[<img src="https://avatars.githubusercontent.com/u/5010606?v=4" width="100px;"/><br/><sub><b>jinasonlin</b></sub>](https://github.com/jinasonlin)<br/>|[<img src="https://avatars.githubusercontent.com/u/8500303?v=4" width="100px;"/><br/><sub><b>legendecas</b></sub>](https://github.com/legendecas)<br/>|[<img src="https://avatars.githubusercontent.com/u/20775828?v=4" width="100px;"/><br/><sub><b>lzqmyb</b></sub>](https://github.com/lzqmyb)<br/>|[<img src="https://avatars.githubusercontent.com/u/70498637?v=4" width="100px;"/><br/><sub><b>DevXiaolan</b></sub>](https://github.com/DevXiaolan)<br/>|[<img src="https://avatars.githubusercontent.com/u/1774223?v=4" width="100px;"/><br/><sub><b>villins</b></sub>](https://github.com/villins)<br/>
+
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Sat Aug 12 2023 11:16:17 GMT+0800`.
+
+<!-- GITCONTRIBUTOR_END -->
