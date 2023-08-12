@@ -32,7 +32,9 @@ jobs:
       run: npm i
 
     - name: Run Unit Tests
-      run: npm run test-local
-
-    - name: Upload coverage
       run: npm run ci
+
+    - name: Code Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
