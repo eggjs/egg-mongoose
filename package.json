@@ -17,17 +17,15 @@
     "mongoose": "^7.2.2"
   },
   "devDependencies": {
-    "autod": "^3.1.2",
     "bluebird": "^3.5.1",
     "dotenv": "^7.0.0",
     "egg": "^3.16.0",
     "egg-bin": "^6.4.1",
     "egg-mock": "^5.10.7",
-    "eslint": "^5.15.3",
-    "eslint-config-egg": "^7.1.0",
+    "eslint": "^8.47.0",
+    "eslint-config-egg": "^12.2.1",
     "mocha": "^10.2.0",
-    "supertest": "^4.0.2",
-    "webstorm-disable-index": "^1.1.2"
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -38,7 +36,7 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "contributor": "git-contributor"
   },
   "files": [
     "index.js",
@@ -49,9 +47,6 @@
     "app",
     "lib"
   ],
-  "ci": {
-    "version": "14, 16, 18"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eggjs/egg-mongoose.git"
@@ -60,4 +55,3 @@
     "url": "https://github.com/eggjs/egg/issues"
   }
 }
-
