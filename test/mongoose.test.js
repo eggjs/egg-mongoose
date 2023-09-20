@@ -23,8 +23,8 @@ describe('test/mongoose.test.js', () => {
     afterEach(mm.restore);
     afterEach(async function() {
       try {
-        await app.model.Book.remove({});
-        await app.model.User.remove({});
+        await app.model.Book.deleteMany({});
+        await app.model.User.deleteMany({});
       } catch (err) {
         console.warn(err);
       }
@@ -92,30 +92,6 @@ describe('test/mongoose.test.js', () => {
     });
   });
 
-  describe('custom promise', () => {
-    let app;
-    before(async function() {
-      app = mm.app({
-        baseDir: 'apps/mongoose-custom',
-      });
-      await app.ready();
-    });
-
-    after(async function() {
-      await app.close();
-    });
-    afterEach(mm.restore);
-    afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
-    });
-
-    it('should load custom promise', async function() {
-      const query = app.model.User.findOne({});
-      assert.equal(query.exec().constructor, require('bluebird'));
-    });
-  });
-
   describe('multi client', () => {
     let app;
     before(async function() {
@@ -130,8 +106,8 @@ describe('test/mongoose.test.js', () => {
     });
     afterEach(mm.restore);
     afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
     it('should get user from book', async function() {
@@ -164,8 +140,8 @@ describe('test/mongoose.test.js', () => {
     });
     afterEach(mm.restore);
     afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
     it('should get user from book', async function() {
@@ -198,8 +174,8 @@ describe('test/mongoose.test.js', () => {
     });
     afterEach(mm.restore);
     afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
     it('should has app custom mymongoose', async function() {
@@ -281,8 +257,8 @@ describe('test/mongoose.test.js', () => {
     });
     afterEach(mm.restore);
     afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
     it('should has model extra property', async function() {
@@ -312,8 +288,8 @@ describe('test/mongoose.test.js', () => {
     });
     afterEach(mm.restore);
     afterEach(async function() {
-      await app.model.Book.remove({});
-      await app.model.User.remove({});
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
     it('should has model extra property', async function() {
