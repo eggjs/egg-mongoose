@@ -10,23 +10,27 @@ const EventEmitter = require('events');
 describe('test/mongoose.test.js', () => {
   describe('base', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
-      yield app.close();
+    after(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      try {
+        await app.model.Book.deleteMany({});
+        await app.model.User.deleteMany({});
+      } catch (err) {
+        console.warn(err);
+      }
     });
 
-    it('should has app model property', function* () {
+    it('should has app model property', async function() {
       assert(app.model);
       assert(app.model.User.prototype instanceof app.mongoose.Model);
       assert(app.model.user === undefined);
@@ -35,7 +39,7 @@ describe('test/mongoose.test.js', () => {
       assert(app.model.Other === undefined);
     });
 
-    it('should has app ctx property', function* () {
+    it('should has app ctx property', async function() {
       const ctx = app.mockContext();
       assert(ctx.model);
       assert(ctx.model.User.prototype instanceof app.mongoose.Model);
@@ -45,37 +49,37 @@ describe('test/mongoose.test.js', () => {
       assert(ctx.model.Other === undefined);
     });
 
-    it('should has sub model', function* () {
+    it('should has sub model', async function() {
       assert(app.model.Animal.prototype instanceof app.mongoose.Model);
       assert(app.model.Animal.Dog.prototype instanceof app.mongoose.Model);
       assert(app.model.Animal.Cat.prototype instanceof app.mongoose.Model);
     });
 
-    it('should get data from create', function* () {
+    it('should get data from create', async function() {
       app.mockCsrf();
 
-      yield request(app.callback())
+      await request(app.callback())
         .post('/users')
         .send({ name: 'mongoose' })
         .expect(200);
 
-      const res = yield request(app.callback()).get('/users');
+      const res = await request(app.callback()).get('/users');
       assert(res.body[0].name === 'mongoose');
     });
 
-    it('should get data from create with capitalized model file name', function* () {
+    it('should get data from create with capitalized model file name', async function() {
       app.mockCsrf();
 
-      yield request(app.callback())
+      await request(app.callback())
         .post('/books')
         .send({ name: 'mongoose' })
         .expect(200);
 
-      const res = yield request(app.callback()).get('/books');
+      const res = await request(app.callback()).get('/books');
       assert(res.body[0].name === 'mongoose');
     });
 
-    it('should load promise', function* () {
+    it('should load promise', async function() {
       const query = app.model.User.findOne({});
       assert.equal(query.exec().constructor, Promise);
     });
@@ -88,121 +92,97 @@ describe('test/mongoose.test.js', () => {
     });
   });
 
-  describe('custom promise', () => {
-    let app;
-    before(function* () {
-      app = mm.app({
-        baseDir: 'apps/mongoose-custom',
-      });
-      yield app.ready();
-    });
-
-    after(function* () {
-      yield app.close();
-    });
-    afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
-    });
-
-    it('should load custom promise', function* () {
-      const query = app.model.User.findOne({});
-      assert.equal(query.exec().constructor, require('bluebird'));
-    });
-  });
-
   describe('multi client', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose-multi',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
-      yield app.close();
+    after(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
-    it('should get user from book', function* () {
+    it('should get user from book', async function() {
       app.mockCsrf();
 
-      const { body: user } = yield app.httpRequest()
+      const { body: user } = await app.httpRequest()
         .post('/users')
         .send({ name: 'mongoose' });
 
-      const { body: book } = yield app.httpRequest()
+      const { body: book } = await app.httpRequest()
         .post('/books')
         .send({ name: 'mongoose', user: user._id });
 
-      const { body: res } = yield app.httpRequest().get(`/books/${book._id}`);
+      const { body: res } = await app.httpRequest().get(`/books/${book._id}`);
       assert(res.user.name === 'mongoose');
     });
   });
 
   describe('multi client default db', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose-multi-defaultDB',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
+    after(async function() {
       app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
-    it('should get user from book', function* () {
+    it('should get user from book', async function() {
       app.mockCsrf();
 
-      const { body: user } = yield app.httpRequest()
+      const { body: user } = await app.httpRequest()
         .post('/users')
         .send({ name: 'mongoose' });
 
-      const { body: book } = yield app.httpRequest()
+      const { body: book } = await app.httpRequest()
         .post('/books')
         .send({ name: 'mongoose', user: user._id });
 
-      const { body: res } = yield app.httpRequest().get(`/books/${book._id}`);
+      const { body: res } = await app.httpRequest().get(`/books/${book._id}`);
       assert(res.user.name === 'mongoose');
     });
   });
 
   describe('custom loadModel', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose-loadModel',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
-      yield app.close();
+    after(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
-    it('should has app custom mymongoose', function* () {
+    it('should has app custom mymongoose', async function() {
       assert(app.mymongoose);
     });
 
-    it('should has app model property', function* () {
+    it('should has app model property', async function() {
       assert(app.model);
       assert(app.model.User.prototype instanceof app.mongoose.Model);
       assert(app.model.user === undefined);
@@ -217,7 +197,7 @@ describe('test/mongoose.test.js', () => {
     const createConnection = mongoose.createConnection;
     let connection;
     let onCreateConnection;
-    beforeEach(function* () {
+    beforeEach(async function() {
       connection = new EventEmitter();
       mongoose.createConnection = () => {
         setTimeout(onCreateConnection, 10);
@@ -225,8 +205,8 @@ describe('test/mongoose.test.js', () => {
       };
     });
 
-    afterEach(function* () {
-      yield app.close();
+    afterEach(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
     afterEach(() => {
@@ -235,17 +215,17 @@ describe('test/mongoose.test.js', () => {
       mongoose.createConnection = createConnection;
     });
 
-    it('should establish first connection', function* () {
+    it('should establish first connection', async function() {
       app = mm.app({
         baseDir: 'apps/mongoose',
       });
       onCreateConnection = () => {
         connection.emit('connected');
       };
-      yield app.ready();
+      await app.ready();
     });
 
-    it('should rethrow on first connection', function* () {
+    it('should rethrow on first connection', async function() {
       app = mm.app({
         baseDir: 'apps/mongoose',
       });
@@ -253,7 +233,7 @@ describe('test/mongoose.test.js', () => {
         connection.emit('error', new Error('foobar'));
       };
       try {
-        yield app.ready();
+        await app.ready();
       } catch (err) {
         assert(err != null);
         assert(err.message === '[egg-mongoose]foobar');
@@ -265,25 +245,25 @@ describe('test/mongoose.test.js', () => {
 
   describe('global plugins', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose-plugin',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
-      yield app.close();
+    after(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
-    it('should has model extra property', function* () {
-      const user = yield app.model.User.create({});
-      const book = yield app.model.Book.create({});
+    it('should has model extra property', async function() {
+      const user = await app.model.User.create({});
+      const book = await app.model.Book.create({});
       assert(user);
       assert(user.lastMod instanceof Date);
       assert(user.updatedAt instanceof Date);
@@ -296,25 +276,25 @@ describe('test/mongoose.test.js', () => {
 
   describe('multi client plugins', () => {
     let app;
-    before(function* () {
+    before(async function() {
       app = mm.app({
         baseDir: 'apps/mongoose-multi-client-plugins',
       });
-      yield app.ready();
+      await app.ready();
     });
 
-    after(function* () {
-      yield app.close();
+    after(async function() {
+      await app.close();
     });
     afterEach(mm.restore);
-    afterEach(function* () {
-      yield app.model.Book.remove({});
-      yield app.model.User.remove({});
+    afterEach(async function() {
+      await app.model.Book.deleteMany({});
+      await app.model.User.deleteMany({});
     });
 
-    it('should has model extra property', function* () {
-      const user = yield app.model.User.create({});
-      const book = yield app.model.Book.create({});
+    it('should has model extra property', async function() {
+      const user = await app.model.User.create({});
+      const book = await app.model.Book.create({});
       assert(user);
       assert(user.lastMod instanceof Date);
       assert(user.updatedAt instanceof Date);

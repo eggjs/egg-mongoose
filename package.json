@@ -14,10 +14,9 @@
   ],
   "dependencies": {
     "await-first": "^1.0.0",
-    "mongoose": "^7.2.2"
+    "mongoose": "^7.5.2"
   },
   "devDependencies": {
-    "bluebird": "^3.5.1",
     "dotenv": "^7.0.0",
     "egg": "^3.16.0",
     "egg-bin": "^6.4.1",
