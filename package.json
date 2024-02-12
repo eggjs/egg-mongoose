@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "await-first": "^1.0.0",
-    "mongoose": "^7.5.2"
+    "mongoose": "^8.0.0"
   },
   "devDependencies": {
     "dotenv": "^7.0.0",
